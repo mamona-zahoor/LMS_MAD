@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".IssueBook">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="match_parent"
+            android:layout_height="43dp"
+            android:text="Issue Book"
+            android:textAlignment="center"
+            android:textColor="@color/colorAccent"
+            android:textSize="24sp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <EditText
+                    android:id="@+id/txtISBN"
+                    android:layout_width="333dp"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:hint="Book ISBN"
+                    android:inputType="textPersonName" />
+
+                <ImageButton
+                    android:id="@+id/cmdScan"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    app:srcCompat="@android:drawable/ic_menu_camera" />
+            </LinearLayout>
+
+            <EditText
+                android:id="@+id/txtIssueTo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="Issue To"
+                android:inputType="textPersonName" />
+
+            <TextView
+                android:id="@+id/ReturnDate"
+                android:layout_width="match_parent"
+                android:layout_height="43dp"
+                android:text="Return Date"
+                android:textSize="18sp" />
+
+            <CalendarView
+                android:id="@+id/cdrReturn"
+                android:layout_width="match_parent"
+                android:layout_height="302dp" />
+
+            <Button
+                android:id="@+id/cmdNext"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="150dp"
+                android:layout_marginTop="10dp"
+                android:background="@color/colorPrimary"
+                android:onClick="Next"
+                android:paddingHorizontal="60dp"
+                android:text="Issue"
+                android:textAlignment="center"
+                android:textColor="@color/colorWhite" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

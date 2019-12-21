@@ -1,0 +1,127 @@
+package com.example.lms;
+
+import android.content.Context;
+import android.widget.Toast;
+
+public class AllBooks {
+    private String BookName;
+    private String ISBN;
+    private String Price;
+    private String Edition;
+    private String Id;
+    private String Availability;
+
+
+    public AllBooks()
+    {
+
+    }
+
+
+    public AllBooks(String bookName, String ISBN, String price, String edition, String id, String availability) {
+        BookName = bookName;
+        this.ISBN = ISBN;
+        Price = price;
+        Edition = edition;
+        Id = id;
+        Availability = availability;
+    }
+
+    public void Validation( String field,String s, Context c)
+    {
+        if(field == "name")
+        {
+            if(s == "")
+            {
+                Toast.makeText(c, "Please Enter Book Name", Toast.LENGTH_SHORT).show();
+
+            }
+
+        }
+        if(field == "number")
+        {
+            if(s == "")
+            {
+                Toast.makeText(c, "Please Enter Book Number", Toast.LENGTH_SHORT).show();
+
+            }
+
+        }
+        if(field == "price")
+        {
+            if(s == "")
+            {
+                Toast.makeText(c, "Please Enter Book Price", Toast.LENGTH_SHORT).show();
+
+            }
+
+        }
+        if(field == "Edition")
+        {
+            if(s == "")
+            {
+                Toast.makeText(c, "Please Enter Book Edition", Toast.LENGTH_SHORT).show();
+
+            }
+
+        }
+
+
+    }
+    public void NumberValidation( String s, Context c)
+    {
+        if(s == "")
+        {
+            Toast.makeText(c, "All fields are Required", Toast.LENGTH_SHORT).show();
+        }
+
+    }
+
+    public String getBookName() {
+        return BookName;
+    }
+
+    public void setBookName(String bookName) {
+        BookName = bookName;
+    }
+
+    public String getISBN() {
+        return ISBN;
+    }
+
+    public void setISBN(String ISBN) {
+        this.ISBN = ISBN;
+    }
+
+    public String getPrice() {
+        return Price;
+    }
+
+    public void setPrice(String price) {
+        Price = price;
+    }
+
+    public String getEdition() {
+        return Edition;
+    }
+
+    public void setEdition(String edition) {
+        Edition = edition;
+    }
+
+    public String getId() {
+        return Id;
+    }
+
+    public void setId(String id) {
+        Id = id;
+    }
+
+    public String getAvailability() {
+        return Availability;
+    }
+
+    public void setAvailability(String availability) {
+        Availability = availability;
+    }
+}

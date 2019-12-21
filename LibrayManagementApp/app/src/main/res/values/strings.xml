@@ -3,5 +3,12 @@
     <string name="navigation_drawer_open">Drawer Open</string>
     <string name="navigation_drawer_close">Drawer Closed</string>
 
+    <string-array name="availabilityarray">
+        <item>Status</item>
+        <item>Available</item>
+        <item>Issued</item>
+    </string-array>
+
+
 
 </resources>

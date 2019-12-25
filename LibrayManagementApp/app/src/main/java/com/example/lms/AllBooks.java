@@ -1,6 +1,7 @@
 package com.example.lms;
 
 import android.content.Context;
+import android.net.Uri;
 import android.widget.Toast;
 
 public class AllBooks {
@@ -10,6 +11,7 @@ public class AllBooks {
     private String Edition;
     private String Id;
     private String Availability;
+    private Uri BookImage;
 
 
     public AllBooks()
@@ -18,16 +20,25 @@ public class AllBooks {
     }
 
 
-    public AllBooks(String bookName, String ISBN, String price, String edition, String id, String availability) {
+    public AllBooks(String bookName, String ISBN, String price, String edition, String id, String availability,Uri img) {
         BookName = bookName;
         this.ISBN = ISBN;
         Price = price;
         Edition = edition;
         Id = id;
+        BookImage = img;
         Availability = availability;
     }
 
-    public void Validation( String field,String s, Context c)
+    public Uri getBookImage() {
+        return BookImage;
+    }
+
+    public void setBookImage(Uri bookImage) {
+        BookImage = bookImage;
+    }
+
+    public void Validation(String field, String s, Context c)
     {
         if(field == "name")
         {

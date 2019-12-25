@@ -34,15 +34,13 @@ public class AllBooksList extends AppCompatActivity {
 
         booksreff = FirebaseDatabase.getInstance().getReference("allbooks");
         authorreff = FirebaseDatabase.getInstance().getReference("Authors");
+        getdata();
 
 
 
     }
-
-
-    @Override
-    protected void onStart() {
-        super.onStart();
+    public void getdata()
+    {
         booksreff.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -69,6 +67,10 @@ public class AllBooksList extends AppCompatActivity {
             }
         });
     }
+
+
+  
+
 
 
 }

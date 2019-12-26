@@ -9,6 +9,9 @@ public class IssuedBooks {
     private String IssuedDate;
     private String ReturnDate;
 
+    public IssuedBooks() {
+    }
+
     public IssuedBooks(String ISBN, String id, String issueTo, String issuedDate, String returnDate) {
         this.ISBN = ISBN;
         Id = id;

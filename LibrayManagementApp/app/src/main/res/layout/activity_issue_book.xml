@@ -57,7 +57,7 @@
             <TextView
                 android:id="@+id/ReturnDate"
                 android:layout_width="match_parent"
-                android:layout_height="43dp"
+                android:layout_height="wrap_content"
                 android:text="Return Date"
                 android:textSize="18sp" />
 
@@ -73,7 +73,7 @@
                 android:layout_marginLeft="150dp"
                 android:layout_marginTop="10dp"
                 android:background="@color/colorPrimary"
-                android:onClick="Next"
+                android:onClick="IssueConfirmation"
                 android:paddingHorizontal="60dp"
                 android:text="Issue"
                 android:textAlignment="center"

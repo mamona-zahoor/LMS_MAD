@@ -96,6 +96,7 @@ public class AllBooks {
         }
 
     }
+  //  public String getNameOfBook(){return BookName;}
 
     public String getBookName() {
         return BookName;

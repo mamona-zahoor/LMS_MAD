@@ -1,35 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
-
-   <!-- <ImageView android:layout_height="156dp"
-        android:layout_width="128dp"
-        android:srcCompat="@drawable/ic_kl"
-        android:id="@+id/imageView"/>
-        -->
-
-
-    -<LinearLayout android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:orientation="vertical">
+    android:layout_height="match_parent"
+    android:paddingLeft="20dp"
+    android:paddingTop="20dp">
 
-    <TextView android:layout_height="wrap_content"
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="123dp"
+        android:layout_height="104dp"
+        app:srcCompat="@android:drawable/ic_menu_camera" />
+
+
+    <LinearLayout
         android:layout_width="match_parent"
-        android:id="@+id/BookName"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-        android:textSize="18sp"
-        android:text="TextView"/>
+        <TextView
+            android:id="@+id/txtBookName"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_marginTop="20dp"
+            android:text="TextView"
+            android:textSize="18sp" />
 
-    <TextView android:layout_height="wrap_content"
-        android:layout_width="match_parent"
-        android:id="@+id/txtStatus"
-        android:textSize="14sp"
-        android:text="TextView"
-        android:layout_marginTop="10dp"/>
+        <TextView
+            android:id="@+id/txtStatus"
+            android:layout_width="match_parent"
+            android:layout_height="39dp"
+            android:layout_marginTop="10dp"
+            android:text="TextView"
+            android:textSize="14sp" />
 
 
-</LinearLayout>
-
-
+    </LinearLayout>
 </LinearLayout>

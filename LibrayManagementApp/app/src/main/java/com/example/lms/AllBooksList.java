@@ -37,57 +37,40 @@ public class AllBooksList extends AppCompatActivity {
 
         booksreff = FirebaseDatabase.getInstance().getReference("allbooks");
         authorreff = FirebaseDatabase.getInstance().getReference("Authors");
-     //   getdata();
+      //  getdata();
+        booksreff.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                for (DataSnapshot dataSnapshot1 : dataSnapshot.getChildren()) {
 
+                    AllBooks book = new AllBooks();
+                    book = dataSnapshot1.getValue(AllBooks.class);
+                    BookList.add(book);
+                }
+                Toast.makeText(getApplicationContext(), "array length is" , Toast.LENGTH_SHORT).show();
 
-
-
-
-
-    }
-
-    public interface DataStatus{
-        void DataIsLoaded(List<AllBooks> books, List<String>keysm);
-        void Updated();
-        void Inserted();
-        void Deleted();
-
-    }
-
-
-
-
-public void getdata(final DataStatus dataStatus)
-{
-    booksreff.addValueEventListener(new ValueEventListener() {
-        @Override
-        public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-
-            List<String> keys = new ArrayList<>();
-            for(DataSnapshot bookSnap: dataSnapshot.getChildren())
-            {
-
-                // authorList.clear();
-
-                BookList.clear();
-                keys.add(bookSnap.getKey());
-                AllBooks Book = bookSnap.getValue(AllBooks.class);
-                // Authors auth = bookSnap.getValue(Authors.class);
-                BookList.add(Book);
-                //  authorList.add(auth);
+                AllBooksArrayAdapter adapter = new AllBooksArrayAdapter(AllBooksList.this, BookList);
+                lst.setAdapter(adapter);
             }
-            dataStatus.DataIsLoaded(BookList,keys);
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
 
-            AllBooksArrayAdapter adapter = new AllBooksArrayAdapter(AllBooksList.this,BookList,authorList);
-            lst.setAdapter(adapter);
-        }
+            }
+        });
 
-        @Override
-        public void onCancelled(@NonNull DatabaseError databaseError) {
-            Toast.makeText(AllBooksList.this, "Please Enter Book Number", Toast.LENGTH_SHORT).show();
-        }
-    });
-}
+
+
+
+
+
+    }
+
+
+
+
+
+
+
 
 
 }

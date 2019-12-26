@@ -14,14 +14,17 @@
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
         <activity android:name=".AllIssuedBooks">
 
+
         </activity>
-        <activity android:name=".AllBooksList"></activity>
-        <activity android:name=".IssueBook" >
+        <activity android:name=".AllBooksList">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity android:name=".IssueBook" >
+
 
         </activity>
         <activity android:name=".AddBooks">

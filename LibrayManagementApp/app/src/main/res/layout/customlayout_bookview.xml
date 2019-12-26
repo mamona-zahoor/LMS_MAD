@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/customlayout_bookviewparent"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="10dp">
+
+<ImageView
+    android:layout_width="100dp"
+    android:layout_height="130dp"
+    android:id="@+id/bookview_img"
+
+    android:src="@mipmap/headsyoulose"/>
+
+    <TextView
+        android:id="@+id/custombooklayout_bookname"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/bookview_img"
+        android:layout_marginLeft="20dp"
+
+        android:text="bookname"
+        android:textStyle="bold"
+        android:textColor="@color/colorBlack"
+        android:textSize="20dp" />
+
+    <TextView
+        android:id="@+id/custombooklayout_publisher"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/bookview_img"
+        android:layout_below="@id/custombooklayout_bookname"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="3dp"
+        android:text="published by"
+
+        android:textSize="17dp" />
+
+    <TextView
+        android:id="@+id/custombooklayout_author"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/bookview_img"
+        android:layout_below="@id/custombooklayout_publisher"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="3dp"
+        android:text="authors"
+
+        android:textSize="17dp" />
+    <TextView
+        android:id="@+id/custombooklayout_edition"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/bookview_img"
+        android:layout_below="@id/custombooklayout_author"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="3dp"
+        android:text="edition"
+
+        android:textSize="17dp" />
+    <TextView
+        android:id="@+id/custombooklayout_availablestatus"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/bookview_img"
+        android:layout_below="@id/custombooklayout_edition"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="3dp"
+        android:text="Not Available"
+
+        android:textSize="17dp" />
+
+
+</RelativeLayout>

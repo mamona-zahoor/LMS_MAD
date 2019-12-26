@@ -11,10 +11,6 @@ public class Authors {
         BookId = bookId;
         AuthorName = authorName;
     }
-    public Authors()
-    {
-
-    }
 
     public String getAuthorId() {
         return AuthorId;

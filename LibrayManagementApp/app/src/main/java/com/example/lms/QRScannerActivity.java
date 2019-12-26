@@ -3,7 +3,6 @@ package com.example.lms;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
-import android.widget.Toast;
 
 import com.google.zxing.Result;
 
@@ -22,9 +21,8 @@ public class QRScannerActivity extends AppCompatActivity implements ZXingScanner
 
     @Override
     public void handleResult(Result result) {
-        Toast.makeText(getApplicationContext(),"result is"+result.getText(),Toast.LENGTH_SHORT).show();
         IssueBook.ISBN.setText(result.getText());
-      //  onBackPressed();
+        onBackPressed();
     }
 
     @Override

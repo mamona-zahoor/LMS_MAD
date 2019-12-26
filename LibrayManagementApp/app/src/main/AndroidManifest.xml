@@ -13,9 +13,6 @@
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
 
         <activity android:name=".LoginActivity">
-
-        </activity>
-        <activity android:name=".AllBooksList">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -23,10 +20,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".QRScannerActivity" />
-        <activity android:name=".AddBooks" >
-
-        </activity>
-
+        <activity android:name=".AddBooks" />
         <activity android:name=".IssueBook" />
         <activity android:name=".ChangePasswordActivity"/>
         <activity android:name=".ForgotPasswordActivity" />

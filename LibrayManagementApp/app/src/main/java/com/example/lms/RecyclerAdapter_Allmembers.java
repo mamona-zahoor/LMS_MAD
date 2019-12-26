@@ -38,7 +38,7 @@ public class RecyclerAdapter_Allmembers extends RecyclerView.Adapter<RecyclerAda
     }
 
     @Override
-    public void onBindViewHolder(@NonNull RecyclerAdapter_Allmembers.ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
 
         holder.membername.setText(arrayList.get(position).name);
         holder.memberrole.setText(arrayList.get(position).userrole);

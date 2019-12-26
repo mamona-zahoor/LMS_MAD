@@ -12,8 +12,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Toast;
 
+import com.basgeekball.awesomevalidation.AwesomeValidation;
+import com.basgeekball.awesomevalidation.ValidationStyle;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.snackbar.Snackbar;
@@ -54,6 +55,11 @@ public class ChangePasswordActivity extends Fragment {
         final EditText newPassword=(EditText) view.findViewById(R.id.changepasswordact_newpassword);
         final FirebaseUser firebaseUser=FirebaseAuth.getInstance().getCurrentUser();
         String email=firebaseUser.getEmail();
+     //   AwesomeValidation awesomeValidation=new AwesomeValidation(ValidationStyle.BASIC);
+      //  awesomeValidation.addValidation(getContext(),R.id.txtISBN,"^[A-Za-z\\\\s]{1,}[\\\\.]{0,1}[A-Za-z\\\\s]{0,}$",R.string.generalerror);
+
+        //this, R.id.txtISBN, "^[A-Za-z\\\\s]{1,}[\\\\.]{0,1}[A-Za-z\\\\s]{0,}$", R.string.generalerror
+
       //  View parentView=(View) findViewById(R.id.changepasswordact_parentlayout);
         AuthCredential credential= EmailAuthProvider.getCredential(email,oldPassword.getText().toString());
         firebaseUser.reauthenticate(credential).addOnCompleteListener(new OnCompleteListener<Void>() {

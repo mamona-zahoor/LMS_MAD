@@ -10,8 +10,7 @@
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="123dp"
-        android:layout_height="191dp"
-        android:layout_marginRight="20dp"
+        android:layout_height="104dp"
         app:srcCompat="@android:drawable/ic_menu_camera" />
 
 
@@ -23,68 +22,18 @@
         <TextView
             android:id="@+id/txtBookName"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="48dp"
             android:layout_marginTop="20dp"
             android:text="TextView"
-            android:textSize="14sp" />
-
-        <TextView
-            android:id="@+id/txtAuthor"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:text="TextView"
-            android:textSize="14sp" />
-
-        <TextView
-            android:id="@+id/txtEdition"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="TextView"
-            android:textSize="14sp" />
-
-        <TextView
-            android:id="@+id/txtPrice"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="TextView"
-            android:textSize="14sp" />
-
-        <TextView
-            android:id="@+id/txtISBN"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="TextView"
-            android:textSize="14sp" />
-
+            android:textSize="18sp" />
 
         <TextView
             android:id="@+id/txtStatus"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="39dp"
+            android:layout_marginTop="10dp"
             android:text="TextView"
             android:textSize="14sp" />
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="horizontal">
-
-            <Button
-                android:id="@+id/btnUpdate"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginRight="30dp"
-                android:layout_weight="1"
-                android:text="Update" />
-
-            <Button
-                android:id="@+id/btnDetails"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Details" />
-        </LinearLayout>
 
 
     </LinearLayout>

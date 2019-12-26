@@ -8,16 +8,25 @@ public class IssuedBooks {
     private String IssueTo;
     private String IssuedDate;
     private String ReturnDate;
-
+private String ImageId;
     public IssuedBooks() {
     }
 
-    public IssuedBooks(String ISBN, String id, String issueTo, String issuedDate, String returnDate) {
+    public IssuedBooks(String ISBN, String id, String issueTo, String issuedDate, String returnDate/*, String ImageId*/) {
         this.ISBN = ISBN;
         Id = id;
         IssueTo = issueTo;
         IssuedDate = issuedDate;
+      //  this.ImageId = ImageId;
         ReturnDate = returnDate;
+    }
+
+    public String getImageId() {
+        return ImageId;
+    }
+
+    public void setImageId(String imageId) {
+        ImageId = imageId;
     }
 
     public String getISBN() {

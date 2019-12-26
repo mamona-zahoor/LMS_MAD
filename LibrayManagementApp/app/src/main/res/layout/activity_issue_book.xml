@@ -64,7 +64,7 @@
             <CalendarView
                 android:id="@+id/cdrReturn"
                 android:layout_width="match_parent"
-                android:layout_height="302dp" />
+                android:layout_height="250dp" />
 
             <Button
                 android:id="@+id/cmdNext"
@@ -78,6 +78,14 @@
                 android:text="Issue"
                 android:textAlignment="center"
                 android:textColor="@color/colorWhite" />
+
+            <EditText
+                android:id="@+id/txtblah"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:text="Name" />
         </LinearLayout>
 
     </LinearLayout>

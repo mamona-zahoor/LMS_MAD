@@ -3,6 +3,7 @@ package com.example.lms;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
@@ -26,14 +27,9 @@ public class AllIssuedBooks extends AppCompatActivity {
         setContentView(R.layout.activity_all_issued_books);
         listViewIssued = (ListView) findViewById(R.id.listViewIssued);
         IssuedBooksList = new ArrayList<>();
-        Db = FirebaseDatabase.getInstance().getReference("Issuedbooks");
-    }
-
-    @Override
-    protected void onStart() {
-        super.onStart();
-
-        Db.addListenerForSingleValueEvent(new ValueEventListener() {
+        Db = FirebaseDatabase.getInstance().getReference("IssuedBooks");
+        Log.d("TAG", "Huhhh");
+        Db.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 for (DataSnapshot dataSnapshot1 : dataSnapshot.getChildren()) {
@@ -41,11 +37,24 @@ public class AllIssuedBooks extends AppCompatActivity {
                     IssuedBooks Ib = new IssuedBooks();
                     Ib = dataSnapshot1.getValue(IssuedBooks.class);
                     IssuedBooksList.add(Ib);
-
                 }
-                //  Toast.makeText(getContext(), "array length is" + arrayList.size(), Toast.LENGTH_SHORT).show();
-                //  IssuedBooksList.otifyDataSetChanged();
+                Toast.makeText(getApplicationContext(), "array length is" + IssuedBooksList.size(), Toast.LENGTH_SHORT).show();
+
+                IssuedBooksList adapter = new IssuedBooksList(AllIssuedBooks.this, IssuedBooksList);
+                listViewIssued.setAdapter(adapter);
             }
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+
+
+        }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
 
             /*   Db.addValueEventListener((new ValueEventListener() {
                    @Override
@@ -60,11 +69,6 @@ public class AllIssuedBooks extends AppCompatActivity {
                        listViewIssued.setAdapter(adapter);
                    }
        */
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-
-            }
-        });
 
     }
 }

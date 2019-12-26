@@ -53,9 +53,9 @@ public class LoginActivity extends AppCompatActivity {
         //   loginUser_modelClass = LoginUser_ModelClass.getInstance();
         firebaseDatabase = FirebaseDatabase.getInstance();
         databaseReference = firebaseDatabase.getReference("users");
-//        if (auth.getCurrentUser() != null) {
-//            getFurtherInfo();
-//        }
+        if (auth.getCurrentUser() != null) {
+            getFurtherInfo();
+        }
 
     }
 
@@ -108,11 +108,12 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     public void getFurtherInfo() {
-        Toast.makeText(getApplicationContext(), "call", Toast.LENGTH_SHORT).show();
+
         databaseReference.child(auth.getUid()).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 try {
+                    Toast.makeText(getApplicationContext(), "call", Toast.LENGTH_SHORT).show();
                     //   LoginUser_ModelClass loginUser_modelClass = LoginUser_ModelClass.getInstance();
                     LoginUser_ModelClass loginUser_modelClass = dataSnapshot.getValue(LoginUser_ModelClass.class);
                     Intent intent = new Intent(getApplicationContext(), MainActivity.class);

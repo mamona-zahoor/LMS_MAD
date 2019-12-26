@@ -103,20 +103,20 @@ Bitmap bitmap;
         ImageRef = FirebaseDatabase.getInstance().getReference("Images");
         AuthorsRef = FirebaseDatabase.getInstance().getReference("Authors");
         sr = FirebaseStorage.getInstance().getReference();
-        if (awesomeValidation.validate()) {
-            QRCodeWriter qrCodeWriter=new QRCodeWriter();
-            try {
-                BitMatrix bitMatrix=qrCodeWriter.encode(ISBN.getText().toString(),BarcodeFormat.QR_CODE,200,200);
-                bitmap=Bitmap.createBitmap(200,200,Bitmap.Config.RGB_565);
-                for(int x=0;x<200;x++){
-                    for(int y=0;y<200;y++){
-                        bitmap.setPixel(x,y,bitMatrix.get(x,y)? Color.BLACK:Color.WHITE);
-                    }
-                }
-                QRimagePreview.setImageBitmap(bitmap);
-            } catch (WriterException e) {
-                e.printStackTrace();
-            }
+//        if (awesomeValidation.validate()) {
+//            QRCodeWriter qrCodeWriter=new QRCodeWriter();
+//            try {
+//                BitMatrix bitMatrix=qrCodeWriter.encode(ISBN.getText().toString(),BarcodeFormat.QR_CODE,200,200);
+//                bitmap=Bitmap.createBitmap(200,200,Bitmap.Config.RGB_565);
+//                for(int x=0;x<200;x++){
+//                    for(int y=0;y<200;y++){
+//                        bitmap.setPixel(x,y,bitMatrix.get(x,y)? Color.BLACK:Color.WHITE);
+//                    }
+//                }
+//                QRimagePreview.setImageBitmap(bitmap);
+//            } catch (WriterException e) {
+//                e.printStackTrace();
+//            }
             Image.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -174,7 +174,7 @@ Bitmap bitmap;
 
                 }
             });
-        }
+    //    }
 
     }
 
@@ -213,7 +213,7 @@ Bitmap bitmap;
 
             imguri = data.getData();
 
-            Picasso.with(this).load(imguri).into(bookpic);
+         //   Picasso.with(this).load(imguri).into(bookpic);
         }
     }
 
@@ -267,7 +267,7 @@ Bitmap bitmap;
                             imgid = ImageRef.push().getKey();
 
                             @SuppressWarnings("VisibleForTests")
-                            ImageuploadInfo imageUploadInfo = new ImageuploadInfo(s, taskSnapshot.getUploadSessionUri().toString(), bookId);
+                            ImageuploadInfo imageUploadInfo = new ImageuploadInfo(s, taskSnapshot.getStorage().getDownloadUrl().toString(), bookId);
                             imgid = ImageRef.push().getKey();
                             ImageRef.child(imgid).setValue(imageUploadInfo);
                         }

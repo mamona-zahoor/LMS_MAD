@@ -14,9 +14,9 @@ import java.util.ArrayList;
 
 public class RecyclerAdapter_AllBooks extends RecyclerView.Adapter<RecyclerAdapter_AllBooks.ViewHolder> {
     Context context;
-    ArrayList<AllBooks> arrayList;
+    ArrayList<Book_ModelClass> arrayList;
 
-    public RecyclerAdapter_AllBooks(Context applicatiocontext, ArrayList<AllBooks> booksArrayList) {
+    public RecyclerAdapter_AllBooks(Context applicatiocontext, ArrayList<Book_ModelClass> booksArrayList) {
         context = applicatiocontext;
         arrayList = booksArrayList;
     }
@@ -29,7 +29,7 @@ public class RecyclerAdapter_AllBooks extends RecyclerView.Adapter<RecyclerAdapt
 
     @NonNull
     @Override
-    public RecyclerAdapter_AllBooks.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater layoutInflater = LayoutInflater.from(context);
         View convertView = layoutInflater.inflate(R.layout.customlayout_bookview, parent, false);
         return new ViewHolder(convertView);
@@ -37,16 +37,16 @@ public class RecyclerAdapter_AllBooks extends RecyclerView.Adapter<RecyclerAdapt
     }
 
     @Override
-    public void onBindViewHolder(@NonNull RecyclerAdapter_AllBooks.ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
 
-        holder.bookname.setText(arrayList.get(position).getBookName());
-        holder.edition.setText(arrayList.get(position).getEdition());
-        holder.bookavailability.setText(arrayList.get(position).getAvailability());
+        holder.bookname.setText(arrayList.get(position).bookName);
+        holder.edition.setText(arrayList.get(position).edition);
+        holder.bookavailability.setText(arrayList.get(position).availability);
     }
 
     @Override
     public int getItemCount() {
-        return 5;
+        return arrayList.size();
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {

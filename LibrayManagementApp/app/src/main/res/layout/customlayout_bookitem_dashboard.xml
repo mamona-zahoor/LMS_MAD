@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/dashboardViewItem_parentlayout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginHorizontal="10dp"
+    android:layout_marginVertical="5dp"
+    android:background="@color/colorPrimary">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <ImageView
+            android:id="@+id/customdashboardlayout_img_dashboard"
+            android:layout_width="match_parent"
+            android:layout_height="130dp"
+            android:src="@mipmap/headsyoulose" />
+
+        <TextView
+            android:id="@+id/customdashboardlayout_bookname"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingVertical="5dp"
+            android:paddingLeft="10dp"
+            android:text="bookname"
+            android:textColor="@color/colorBlack"
+            android:textSize="20dp"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <!--    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"-->
+    <!--        android:id="@+id/customlayout_bookviewparent"-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:padding="10dp">-->
+
+    <!--        <ImageView-->
+    <!--            android:layout_width="100dp"-->
+    <!--            android:layout_height="130dp"-->
+    <!--            android:id="@+id/bookview_img"-->
+
+    <!--            android:src="@mipmap/headsyoulose"/>-->
+
+    <!--        <TextView-->
+    <!--            android:id="@+id/custombooklayout_bookname"-->
+    <!--            android:layout_width="wrap_content"-->
+    <!--            android:layout_height="wrap_content"-->
+    <!--            android:layout_toRightOf="@id/bookview_img"-->
+    <!--            android:layout_marginLeft="20dp"-->
+
+    <!--            android:text="bookname"-->
+    <!--            android:textStyle="bold"-->
+    <!--            android:textColor="@color/colorBlack"-->
+    <!--            android:textSize="20dp" />-->
+
+    <!--        <TextView-->
+    <!--            android:id="@+id/custombooklayout_publisher"-->
+    <!--            android:layout_width="wrap_content"-->
+    <!--            android:layout_height="wrap_content"-->
+    <!--            android:layout_toRightOf="@id/bookview_img"-->
+    <!--            android:layout_below="@id/custombooklayout_bookname"-->
+    <!--            android:layout_marginLeft="20dp"-->
+    <!--            android:layout_marginTop="3dp"-->
+    <!--            android:text="published by"-->
+
+    <!--            android:textSize="17dp" />-->
+
+    <!--        <TextView-->
+    <!--            android:id="@+id/custombooklayout_author"-->
+    <!--            android:layout_width="wrap_content"-->
+    <!--            android:layout_height="wrap_content"-->
+    <!--            android:layout_toRightOf="@id/bookview_img"-->
+    <!--            android:layout_below="@id/custombooklayout_publisher"-->
+    <!--            android:layout_marginLeft="20dp"-->
+    <!--            android:layout_marginTop="3dp"-->
+    <!--            android:text="authors"-->
+
+    <!--            android:textSize="17dp" />-->
+    <!--        <TextView-->
+    <!--            android:id="@+id/custombooklayout_edition"-->
+    <!--            android:layout_width="wrap_content"-->
+    <!--            android:layout_height="wrap_content"-->
+    <!--            android:layout_toRightOf="@id/bookview_img"-->
+    <!--            android:layout_below="@id/custombooklayout_author"-->
+    <!--            android:layout_marginLeft="20dp"-->
+    <!--            android:layout_marginTop="3dp"-->
+    <!--            android:text="edition"-->
+
+    <!--            android:textSize="17dp" />-->
+    <!--        <TextView-->
+    <!--            android:id="@+id/custombooklayout_availablestatus"-->
+    <!--            android:layout_width="wrap_content"-->
+    <!--            android:layout_height="wrap_content"-->
+    <!--            android:layout_toRightOf="@id/bookview_img"-->
+    <!--            android:layout_below="@id/custombooklayout_edition"-->
+    <!--            android:layout_marginLeft="20dp"-->
+    <!--            android:layout_marginTop="3dp"-->
+    <!--            android:text="Not Available"-->
+
+    <!--            android:textSize="17dp" />-->
+
+
+    <!--    </RelativeLayout>-->
+    <!--    <RelativeLayout-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:padding="3dp">-->
+
+    <!--        <ImageView-->
+    <!--            android:id="@+id/viewProductImg"-->
+    <!--            android:layout_width="80dp"-->
+    <!--            android:layout_height="80dp"-->
+    <!--            android:layout_alignParentLeft="true"-->
+    <!--            android:layout_centerVertical="true"-->
+    <!--            android:src="@mipmap/headsyoulose" />-->
+
+    <!--        <RelativeLayout-->
+    <!--            android:id="@+id/child_relative"-->
+    <!--            android:layout_width="match_parent"-->
+    <!--            android:layout_height="wrap_content"-->
+    <!--            android:layout_centerVertical="true"-->
+    <!--            android:layout_marginLeft="10dp"-->
+    <!--            android:layout_toRightOf="@id/viewProductImg"-->
+    <!--            android:padding="10dp">-->
+
+    <!--            <TextView-->
+    <!--                android:id="@+id/viewProductName"-->
+    <!--                android:layout_width="wrap_content"-->
+    <!--                android:layout_height="wrap_content"-->
+    <!--                android:text="Tomato kecthup"-->
+    <!--                android:textColor="@color/colorBlack"-->
+    <!--                android:textSize="17dp" />-->
+
+    <!--            <TextView-->
+    <!--                android:id="@+id/viewProductPrice"-->
+    <!--                android:layout_width="wrap_content"-->
+    <!--                android:layout_height="wrap_content"-->
+    <!--                android:layout_alignBaseline="@id/viewProductName"-->
+    <!--                android:layout_marginLeft="20dp"-->
+    <!--                android:layout_marginTop="10dp"-->
+    <!--                android:layout_toRightOf="@id/viewProductName"-->
+    <!--                android:text="768"-->
+    <!--                android:textColor="@color/colorBlack"-->
+    <!--                android:textSize="17dp" />-->
+
+    <!--            <TextView-->
+    <!--                android:id="@+id/viewProductbrand"-->
+    <!--                android:layout_width="wrap_content"-->
+    <!--                android:layout_height="wrap_content"-->
+    <!--                android:layout_below="@id/viewProductName"-->
+    <!--                android:layout_marginTop="5dp"-->
+    <!--                android:text="National"-->
+    <!--                android:textColor="@color/colorBlack"-->
+    <!--                android:textSize="17dp" />-->
+
+    <!--            <TextView-->
+    <!--                android:id="@+id/viewProductCategory"-->
+    <!--                android:layout_width="wrap_content"-->
+    <!--                android:layout_height="wrap_content"-->
+    <!--                android:layout_alignBaseline="@id/viewProductbrand"-->
+    <!--                android:layout_marginLeft="20dp"-->
+    <!--                android:layout_marginTop="10dp"-->
+    <!--                android:layout_toRightOf="@id/viewProductbrand"-->
+    <!--                android:text="45"-->
+    <!--                android:textColor="@color/colorBlack"-->
+    <!--                android:textSize="20dp" />-->
+
+
+    <!--        </RelativeLayout>-->
+
+    <!--    </RelativeLayout>-->
+</androidx.cardview.widget.CardView>

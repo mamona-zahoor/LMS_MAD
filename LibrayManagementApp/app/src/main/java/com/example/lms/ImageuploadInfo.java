@@ -1,5 +1,8 @@
 package com.example.lms;
 
+import com.google.firebase.database.IgnoreExtraProperties;
+
+@IgnoreExtraProperties
 public class ImageuploadInfo {
 
     public String imageName;

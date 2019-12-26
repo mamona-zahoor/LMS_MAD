@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TabHost;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -24,7 +25,7 @@ import java.util.ArrayList;
 public class ViewAllBooks_Fragment extends Fragment {
     FirebaseDatabase database;
     DatabaseReference dbreference;
-    ArrayList<AllBooks> allBooksArrayList = new ArrayList<>();
+    ArrayList<Book_ModelClass> allBooksArrayList = new ArrayList<>();
 
     public ViewAllBooks_Fragment() {
         database = FirebaseDatabase.getInstance();
@@ -35,40 +36,42 @@ public class ViewAllBooks_Fragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.viewbooks_fragment, container, false);
-//        try {
-//            RecyclerView recyclerView = (RecyclerView) view.findViewById(R.id.viewallbooks_recyclerview);
-//            recyclerView.addItemDecoration(new DividerItemDecoration(recyclerView.getContext(), DividerItemDecoration.VERTICAL));
-//            recyclerView.setHasFixedSize(true);
-//
-//            recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-//            // recyclerAdapter_viewContact = new RecyclerAdapter_ViewContact(getContext(), nameList,emailList,phoneList);
-//            final RecyclerAdapter_AllBooks recyclerAdapter_allBooks = new RecyclerAdapter_AllBooks(getContext(), allBooksArrayList);
-//            recyclerView.setAdapter(recyclerAdapter_allBooks);
-//
-//            dbreference.addListenerForSingleValueEvent(new ValueEventListener() {
-//                @Override
-//                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-//                    for (DataSnapshot dataSnapshot1 : dataSnapshot.getChildren()) {
-//                        AllBooks allBooks = dataSnapshot1.getValue(AllBooks.class);
-//                        allBooksArrayList.add(allBooks);
-//
-//                    }
-//                    recyclerAdapter_allBooks.notifyDataSetChanged();
-//
-//                }
-//
-//                @Override
-//                public void onCancelled(@NonNull DatabaseError databaseError) {
-//
-//                }
-//            });
-//        } catch (Exception ex) {
-//            Toast.makeText(getContext(), "ereror book view" + ex.getMessage(), Toast.LENGTH_SHORT).show();
-//        }
-        // recyclerAdapter_viewContact = new RecyclerAdapter_ViewContact(getContext(), nameList,emailList,phoneList);
-        //  arrayList = new ArrayList<>();
-        // recyclerAdapter_allmembers = new RecyclerAdapter_Allmembers(getContext(), arrayList);
-        // recyclerView.setAdapter(recyclerAdapter_allmembers);
+        try {
+            RecyclerView recyclerView = (RecyclerView) view.findViewById(R.id.viewallbooks_recyclerview);
+            recyclerView.addItemDecoration(new DividerItemDecoration(recyclerView.getContext(), DividerItemDecoration.VERTICAL));
+            recyclerView.setHasFixedSize(true);
+
+            recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+            // recyclerAdapter_viewContact = new RecyclerAdapter_ViewContact(getContext(), nameList,emailList,phoneList);
+            final RecyclerAdapter_AllBooks recyclerAdapter_allBooks = new RecyclerAdapter_AllBooks(getContext(), allBooksArrayList);
+            recyclerView.setAdapter(recyclerAdapter_allBooks);
+
+            dbreference.addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
+                    for (DataSnapshot dataSnapshot1 : dataSnapshot.getChildren()) {
+                        Book_ModelClass allBooks = dataSnapshot1.getValue(Book_ModelClass.class);
+                        allBooksArrayList.add(allBooks);
+
+                    }
+                    Toast.makeText(getContext(),"data is"+allBooksArrayList.get(0).bookName, Toast.LENGTH_SHORT).show();
+                    recyclerAdapter_allBooks.notifyDataSetChanged();
+
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                }
+            });
+        } catch (Exception ex) {
+            Toast.makeText(getContext(), "ereror book view" + ex.getMessage(), Toast.LENGTH_SHORT).show();
+        }
+//         recyclerAdapter_viewContact = new RecyclerAdapter_ViewContact(getContext(), nameList,emailList,phoneList);
+//          arrayList = new ArrayList<>();
+//         recyclerAdapter_allmembers = new RecyclerAdapter_Allmembers(getContext(), arrayList);
+//         recyclerView.setAdapter(recyclerAdapter_allmembers);
         return view;
         //return super.onCreateView(inflater, container, savedInstanceState);
     }

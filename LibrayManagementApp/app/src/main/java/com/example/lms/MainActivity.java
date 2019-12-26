@@ -41,7 +41,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         fragmentTransaction.replace(R.id.mainframe, new DashboardFragment());
         fragmentTransaction.commit();
 
-        Toast.makeText(getApplicationContext(), "in main name is" + loginUser_modelClass.name + "role is" + loginUser_modelClass.userrole, Toast.LENGTH_SHORT).show();
+      //  Toast.makeText(getApplicationContext(), "in main name is" + loginUser_modelClass.name + "role is" + loginUser_modelClass.userrole, Toast.LENGTH_SHORT).show();
         final Toolbar toolbar = (Toolbar) findViewById(R.id.dashboardToolbar);
         setSupportActionBar(toolbar);
         NavigationView navigationView = (NavigationView) findViewById(R.id.navigationView);
@@ -67,9 +67,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             case R.id.nav_allmembers:
                 getSupportFragmentManager().beginTransaction().replace(R.id.mainframe, new AllMember_Fragment()).commit();
                 break;
-//            case R.id.nav_books:
-//                getSupportFragmentManager().beginTransaction().replace(R.id.mainframe, new ViewAllBooks_Fragment()).commit();
-//                break;
+            case R.id.nav_books:
+                getSupportFragmentManager().beginTransaction().replace(R.id.mainframe, new ViewAllBooks_Fragment()).commit();
+                break;
 //            case R.id.nav_issuedbooks:
 //                getSupportFragmentManager().beginTransaction().replace(R.id.mainframe, new IssueBooks_Fragment()).commit();
 //                break;

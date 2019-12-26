@@ -14,6 +14,7 @@
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
         <activity android:name=".AllBooksList">
 
+
         </activity>
         <activity android:name=".IssueBook"></activity>
         <activity android:name=".AddBooks">
@@ -22,6 +23,7 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
         </activity>
         <activity android:name=".LoginActivity" />
         <activity

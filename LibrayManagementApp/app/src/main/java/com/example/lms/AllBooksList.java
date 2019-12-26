@@ -1,6 +1,7 @@
 package com.example.lms;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
@@ -8,6 +9,7 @@ import android.util.Log;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -15,6 +17,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class AllBooksList extends AppCompatActivity {
 
@@ -34,43 +37,57 @@ public class AllBooksList extends AppCompatActivity {
 
         booksreff = FirebaseDatabase.getInstance().getReference("allbooks");
         authorreff = FirebaseDatabase.getInstance().getReference("Authors");
-        getdata();
+     //   getdata();
+
+
+
 
 
 
     }
-    public void getdata()
-    {
-        booksreff.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
+    public interface DataStatus{
+        void DataIsLoaded(List<AllBooks> books, List<String>keysm);
+        void Updated();
+        void Inserted();
+        void Deleted();
 
-                for(DataSnapshot bookSnap: dataSnapshot.getChildren())
-                {
-                    Log.d("msg","inside");
-                    // authorList.clear();
-                    BookList.clear();
-                    AllBooks Book = bookSnap.getValue(AllBooks.class);
-                    // Authors auth = bookSnap.getValue(Authors.class);
-                    BookList.add(Book);
-                    //  authorList.add(auth);
-                }
-
-                AllBooksArrayAdapter adapter = new AllBooksArrayAdapter(AllBooksList.this,BookList,authorList);
-                lst.setAdapter(adapter);
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-                Toast.makeText(AllBooksList.this, "Please Enter Book Number", Toast.LENGTH_SHORT).show();
-            }
-        });
     }
 
 
-  
 
+
+public void getdata(final DataStatus dataStatus)
+{
+    booksreff.addValueEventListener(new ValueEventListener() {
+        @Override
+        public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
+            List<String> keys = new ArrayList<>();
+            for(DataSnapshot bookSnap: dataSnapshot.getChildren())
+            {
+
+                // authorList.clear();
+
+                BookList.clear();
+                keys.add(bookSnap.getKey());
+                AllBooks Book = bookSnap.getValue(AllBooks.class);
+                // Authors auth = bookSnap.getValue(Authors.class);
+                BookList.add(Book);
+                //  authorList.add(auth);
+            }
+            dataStatus.DataIsLoaded(BookList,keys);
+
+            AllBooksArrayAdapter adapter = new AllBooksArrayAdapter(AllBooksList.this,BookList,authorList);
+            lst.setAdapter(adapter);
+        }
+
+        @Override
+        public void onCancelled(@NonNull DatabaseError databaseError) {
+            Toast.makeText(AllBooksList.this, "Please Enter Book Number", Toast.LENGTH_SHORT).show();
+        }
+    });
+}
 
 
 }

@@ -11,7 +11,8 @@ public class AllBooks {
     private String Edition;
     private String Id;
     private String Availability;
-    private Uri BookImage;
+    private String BookId;
+    private String ImageId;
 
 
     public AllBooks()
@@ -20,22 +21,30 @@ public class AllBooks {
     }
 
 
-    public AllBooks(String bookName, String ISBN, String price, String edition, String id, String availability,Uri img) {
+    public AllBooks(String bookName, String ISBN, String price, String edition, String id, String availability,String img) {
         BookName = bookName;
         this.ISBN = ISBN;
         Price = price;
         Edition = edition;
         Id = id;
-        BookImage = img;
+        ImageId = img;
         Availability = availability;
     }
 
-    public Uri getBookImage() {
-        return BookImage;
+    public String getImageId() {
+        return ImageId;
     }
 
-    public void setBookImage(Uri bookImage) {
-        BookImage = bookImage;
+    public void setImageId(String imageId) {
+        ImageId = imageId;
+    }
+
+    public String getBookImage() {
+        return BookId;
+    }
+
+    public void setBookImage(String bookImage) {
+        BookId = bookImage;
     }
 
     public void Validation(String field, String s, Context c)

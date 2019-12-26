@@ -5,17 +5,16 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.CalendarView;
 import android.widget.EditText;
-import android.widget.TextView;
+import android.widget.ImageButton;
 import android.widget.Toast;
 
-import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.SignInMethodQueryResult;
 import com.google.firebase.database.DataSnapshot;
@@ -33,14 +32,30 @@ public class IssueBook extends AppCompatActivity {
     String Name;
     boolean exists;
     FirebaseAuth firebaseAuth;
-    //EditText ISBN = findViewById(R.id.txtISBN);
+   public static EditText ISBN;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_issue_book);
+        ImageButton scanQRbtn=findViewById(R.id.cmdScan);
+
+        scanQRbtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(IssueBook.this, QRScannerActivity.class);
+                startActivity(intent);
+            }
+        });
 
 
     }
+//    public void scannfun(View view){
+//        textView=(TextView) findViewById(R.id.txt);
+//        Intent intent=new Intent(QR_Activity.this,QRScannerActivity.class);
+//        startActivity(intent);
+//
+//    }
     public void Next(View v)
     {
     }
@@ -50,7 +65,7 @@ public class IssueBook extends AppCompatActivity {
         AlertDialog.Builder builder = new AlertDialog.Builder(IssueBook.this);
         builder.setTitle(R.string.app_name);
         firebaseAuth = FirebaseAuth.getInstance();
-        EditText ISBN = findViewById(R.id.txtISBN);
+        ISBN = findViewById(R.id.txtISBN);
         String j = ISBN.getText().toString();
         EditText IssueTo = findViewById(R.id.txtIssueTo);
         Db = FirebaseDatabase.getInstance().getReference("allbooks");

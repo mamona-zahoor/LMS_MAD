@@ -9,11 +9,13 @@ import android.content.ContentResolver;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.storage.StorageManager;
 import android.provider.MediaStore;
+import android.util.Patterns;
 import android.view.View;
 import android.webkit.MimeTypeMap;
 import android.widget.Button;
@@ -23,6 +25,8 @@ import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.basgeekball.awesomevalidation.AwesomeValidation;
+import com.basgeekball.awesomevalidation.ValidationStyle;
 import com.google.android.gms.auth.api.signin.internal.Storage;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -32,6 +36,10 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.OnProgressListener;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
+import com.google.zxing.BarcodeFormat;
+import com.google.zxing.WriterException;
+import com.google.zxing.common.BitMatrix;
+import com.google.zxing.qrcode.QRCodeWriter;
 import com.squareup.picasso.Picasso;
 
 import java.io.ByteArrayOutputStream;
@@ -50,8 +58,9 @@ public class AddBooks extends AppCompatActivity {
     String imgid;
     Button btn;
     ImageButton Image;
+
   //  ProgressDialog Pg;
-    ImageView bookpic;
+    ImageView bookpic,QRimagePreview;
 
 
     DatabaseReference dbreff,AuthorsRef;
@@ -61,7 +70,7 @@ public class AddBooks extends AppCompatActivity {
     boolean check = true;
 
     public static final String BOOKID = "com.example.lms.bookId";
-
+    AwesomeValidation awesomeValidation;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -77,7 +86,14 @@ public class AddBooks extends AppCompatActivity {
         author = findViewById(R.id.txtAuthor);
      //   Pg = new ProgressDialog(AddBooks.this);
         bookpic = findViewById(R.id.imgbook);
-
+        String regex = "^[a-zA-Z0-9]+$";
+        awesomeValidation = new AwesomeValidation(ValidationStyle.BASIC);
+        awesomeValidation.addValidation(this, R.id.txtbookname, "^[A-Za-z\\\\s]{1,}[\\\\.]{0,1}[A-Za-z\\\\s]{0,}$", R.string.generalerror);
+        awesomeValidation.addValidation(this, R.id.txtisbn, "^[A-Za-z\\\\s]{1,}[\\\\.]{0,1}[A-Za-z\\\\s]{0,}$", R.string.generalerror);
+        awesomeValidation.addValidation(this, R.id.txtAuthor, "^[A-Za-z\\\\s]{1,}[\\\\.]{0,1}[A-Za-z\\\\s]{0,}$", R.string.generalerror);
+        awesomeValidation.addValidation(this, R.id.txtPrice, "^[A-Za-z\\\\s]{1,}[\\\\.]{0,1}[A-Za-z\\\\s]{0,}$", R.string.generalerror);
+        awesomeValidation.addValidation(this, R.id.txtEdition, "^[A-Za-z\\\\s]{1,}[\\\\.]{0,1}[A-Za-z\\\\s]{0,}$", R.string.generalerror);
+        QRimagePreview=findViewById(R.id.qrimagepreview);
 
 
 
@@ -219,6 +235,23 @@ public class AddBooks extends AppCompatActivity {
 
           //  Pg.setTitle("Image is Uploading...");
           //  Pg.show();
+
+            //generate QR of ISBN and store image in firebase
+            QRCodeWriter qrCodeWriter=new QRCodeWriter();
+            Bitmap bitmap;
+            try {
+                BitMatrix bitMatrix=qrCodeWriter.encode(ISBN.getText().toString(), BarcodeFormat.QR_CODE,200,200);
+                bitmap=Bitmap.createBitmap(200,200,Bitmap.Config.RGB_565);
+                for(int x=0;x<200;x++){
+                    for(int y=0;y<200;y++){
+                        bitmap.setPixel(x,y,bitMatrix.get(x,y)? Color.BLACK:Color.WHITE);
+                    }
+                }
+                QRimagePreview.setImageBitmap(bitmap);
+            } catch (WriterException e) {
+                e.printStackTrace();
+            }
+     ///////////////////////////////////////////////
             StorageReference storageReference2 = sr.child(System.currentTimeMillis() + "." + GetFileExtension(imguri));
             storageReference2.putFile(imguri)
                     .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {

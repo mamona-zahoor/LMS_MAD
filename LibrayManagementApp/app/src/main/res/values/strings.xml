@@ -2,7 +2,11 @@
     <string name="app_name">LMS</string>
     <string name="navigation_drawer_open">Drawer Open</string>
     <string name="navigation_drawer_close">Drawer Closed</string>
-
+    <string name="emailerror">Invalid Email</string>
+    <string name="passworderror">Invalid Password</string>
+    <string name="firstnameerror">Invalid FirstName</string>
+    <string name="lastnameerror">Invalid LastName</string>
+    <string name="generalerror">Invalid Input</string>
     <string-array name="availabilityarray">
         <item>Status</item>
         <item>Available</item>

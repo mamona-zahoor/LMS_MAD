@@ -19,6 +19,7 @@ import android.widget.FrameLayout;
 import android.widget.Toast;
 
 import com.google.android.material.navigation.NavigationView;
+import com.google.firebase.auth.FirebaseAuth;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     DrawerLayout drawerLayout;
@@ -60,20 +61,28 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
 
         switch (menuItem.getItemId()) {
+            case R.id.nav_dashboard:
+                getSupportFragmentManager().beginTransaction().replace(R.id.mainframe, new DashboardFragment()).commit();
+                break;
             case R.id.nav_allmembers:
-
                 getSupportFragmentManager().beginTransaction().replace(R.id.mainframe, new AllMember_Fragment()).commit();
-
                 break;
-            case R.id.nav_books:
-                //   getSupportFragmentManager().beginTransaction().replace(R.id.mainframe,new AllMember_Fragment()).commit();
+//            case R.id.nav_books:
+//                getSupportFragmentManager().beginTransaction().replace(R.id.mainframe, new ViewAllBooks_Fragment()).commit();
+//                break;
+//            case R.id.nav_issuedbooks:
+//                getSupportFragmentManager().beginTransaction().replace(R.id.mainframe, new IssueBooks_Fragment()).commit();
+//                break;
+            case R.id.nav_changepassword:
+                getSupportFragmentManager().beginTransaction().replace(R.id.mainframe, new ChangePasswordActivity()).commit();
                 break;
-            case R.id.nav_issuedbooks:
-
-
-
-
-        }
+            case R.id.nav_logout:
+                //    getSupportFragmentManager().beginTransaction().replace(R.id.mainframe, new ChangePasswordActivity()).commit();
+                FirebaseAuth.getInstance().signOut();
+                Intent intent=new Intent(this,LoginActivity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+                startActivity(intent);
+                break; }
         drawerLayout.closeDrawer(Gravity.LEFT);
         return true;
     }

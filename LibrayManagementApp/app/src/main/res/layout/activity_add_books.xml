@@ -25,6 +25,12 @@
         android:layout_marginRight="40dp"
         android:layout_marginBottom="40dp"
         app:srcCompat="@android:drawable/ic_menu_camera" />
+<!--    <ImageView-->
+<!--        android:layout_width="100dp"-->
+<!--        android:layout_height="100dp"-->
+<!--        android:id="@+id/qrimagepreview"-->
+<!--        android:src="@mipmap/goodomens"-->
+<!--        android:layout_marginBottom="20dp"/>-->
 
     <LinearLayout
         android:layout_width="match_parent"

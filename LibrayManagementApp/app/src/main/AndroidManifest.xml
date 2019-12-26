@@ -2,7 +2,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.lms">
 
-    <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.CAMERA" />
 
     <application
@@ -12,27 +11,19 @@
         android:roundIcon="@mipmap/appicon"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
-        <activity android:name=".AllIssuedBooks">
 
-
-        </activity>
-        <activity android:name=".AllBooksList">
+        <activity android:name=".LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".IssueBook" >
-
-
-        </activity>
-        <activity android:name=".AddBooks">
-
-        </activity>
-        <activity android:name=".LoginActivity" >
-
-        </activity>
+        <activity android:name=".QRScannerActivity" />
+        <activity android:name=".AddBooks" />
+        <activity android:name=".IssueBook" />
+        <activity android:name=".ChangePasswordActivity"/>
+        <activity android:name=".ForgotPasswordActivity" />
         <activity
             android:name=".SignUpActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />

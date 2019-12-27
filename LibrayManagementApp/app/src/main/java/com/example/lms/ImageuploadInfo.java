@@ -1,9 +1,7 @@
 package com.example.lms;
 
-import com.google.firebase.database.IgnoreExtraProperties;
-
-@IgnoreExtraProperties
 public class ImageuploadInfo {
+
 
     public String imageName;
     public String imageURL;
@@ -19,6 +17,7 @@ public class ImageuploadInfo {
     }
 
     public ImageuploadInfo(String name, String url, String bookId) {
+        //  this.Id = Id;
         this.imageName = name;
         this.imageURL = url;
         this.bookId = bookId;

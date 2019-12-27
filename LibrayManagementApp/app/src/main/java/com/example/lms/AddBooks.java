@@ -62,7 +62,7 @@ public class AddBooks extends AppCompatActivity {
 
     //  ProgressDialog Pg;
     ImageView bookpic, QRimagePreview;
-
+    boolean checkname,checkisbn,checkprice,checkEdition,checkedition,checkauthor = true;
 
     DatabaseReference dbreff, AuthorsRef;
     DatabaseReference ImageRef;
@@ -97,7 +97,7 @@ public class AddBooks extends AppCompatActivity {
         awesomeValidation.addValidation(this, R.id.txtPrice, "^[A-Za-z\\\\s]{1,}[\\\\.]{0,1}[A-Za-z\\\\s]{0,}$", R.string.generalerror);
         awesomeValidation.addValidation(this, R.id.txtEdition, "^[A-Za-z\\\\s]{1,}[\\\\.]{0,1}[A-Za-z\\\\s]{0,}$", R.string.generalerror);
         QRimagePreview = findViewById(R.id.qrimagepreview);
-Bitmap bitmap;
+        Bitmap bitmap;
 
         dbreff = FirebaseDatabase.getInstance().getReference("allbooks");
         ImageRef = FirebaseDatabase.getInstance().getReference("Images");
@@ -117,66 +117,98 @@ Bitmap bitmap;
 //            } catch (WriterException e) {
 //                e.printStackTrace();
 //            }
-            Image.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
+        Image.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
 
-                    Intent intent = new Intent();
-                    intent.setType("image/*");
-                    intent.setAction(intent.ACTION_GET_CONTENT);
+                Intent intent = new Intent();
+                intent.setType("image/*");
+                intent.setAction(intent.ACTION_GET_CONTENT);
 
-                    startActivityForResult(intent, CAME_REQUEST);
-
-
-                }
-            });
+                startActivityForResult(intent, CAME_REQUEST);
 
 
-            btn.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    try {
-                        String name = BookName.getText().toString();
-                        String number = ISBN.getText().toString();
-                        // String status = BookStatus.getSelectedItem().toString();
-                        String price = Price.getText().toString();
-                        String edition = Edition.getText().toString();
-                        String Author = author.getText().toString();
+            }
+        });
 
 
-                        String id = dbreff.push().getKey();
-                        String authorid = AuthorsRef.push().getKey();
-                        if (name == "") {
-                            Toast.makeText(AddBooks.this, "Please Enter Book Name", Toast.LENGTH_SHORT).show();
+        btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                try {
 
-                        } else if (number == "") {
-                            Toast.makeText(AddBooks.this, "Please Enter Book Number", Toast.LENGTH_SHORT).show();
-                        } else if (price == "") {
-                            Toast.makeText(AddBooks.this, "Please Enter Book Price", Toast.LENGTH_SHORT).show();
-                        } else {
-                            UploadImage(name, id);
-                            if (check == true) {
-                                AllBooks book = new AllBooks(name, number, price, edition, id, "Available", imgid);
-                                Authors a = new Authors(authorid, id, Author);
+                    checkname = true;
+                    checkisbn = true;checkprice = true;checkEdition = true;checkedition= true;
+                    checkauthor = true;
+                    String name = BookName.getText().toString();
+                    String number = ISBN.getText().toString();
+                    // String status = BookStatus.getSelectedItem().toString();
+                    String price = Price.getText().toString();
+                    String edition = Edition.getText().toString();
+                    String Author = author.getText().toString();
 
-                                dbreff.child(id).setValue(book);
-                                AuthorsRef.child(authorid).setValue(a);
-                                Toast.makeText(AddBooks.this, "Saved.. wait Image is Uploading", Toast.LENGTH_LONG).show();
-                            }
 
+                    String id = dbreff.push().getKey();
+                    String authorid = AuthorsRef.push().getKey();
+                    if(BookName.getText().toString().trim().length() <= 0)
+                    {
+                        checkname = false;
+                        Toast.makeText(AddBooks.this, "Please Enter Book Name", Toast.LENGTH_SHORT).show();
+
+                    }
+                    else if(ISBN.getText().toString().trim().length() <= 0)
+                    {
+                        checkisbn = false;
+                        Toast.makeText(AddBooks.this, "Please Enter Book Number", Toast.LENGTH_SHORT).show();
+                    }
+                    else if(Price.getText().toString().trim().length() <= 0)
+                    {
+                        checkprice = false;
+                        Toast.makeText(AddBooks.this, "Please Enter Book Price", Toast.LENGTH_SHORT).show();
+                    }
+                    else if(Edition.getText().toString().trim().length() <= 0)
+                    {
+                        checkedition = false;
+                        Toast.makeText(AddBooks.this, "Please Enter Edition", Toast.LENGTH_SHORT).show();
+                    }
+                    else if(author.getText().toString().trim().length() <= 0)
+                    {
+                        checkauthor = false;
+                        Toast.makeText(AddBooks.this, "Please Enter Author name", Toast.LENGTH_SHORT).show();
+                    }
+                    else if(checkauthor == true&&checkedition == true&&checkprice == true&&checkisbn==true&&checkname== true)
+                    {
+                        UploadImage(name,id);
+                        if(check == true)
+                        {
+                            AllBooks book = new AllBooks(name,number,price,edition,id,"Available",imgid);
+                            Authors a = new Authors(authorid,id,Author);
+
+                            dbreff.child(id).setValue(book);
+                            AuthorsRef.child(authorid).setValue(a);
+                            Toast.makeText(AddBooks.this, "Saved.. wait Image is Uploading", Toast.LENGTH_LONG).show();
                         }
 
-
-                    } catch (Exception e) {
-                        Toast.makeText(AddBooks.this, "Error" + e.getMessage(), Toast.LENGTH_SHORT).show();
                     }
 
 
                 }
-            });
-    //    }
+                catch (Exception e)
+                {
+                    Toast.makeText(AddBooks.this, "Error" + e.getMessage(), Toast.LENGTH_SHORT).show();
+                }
+
+
+
+
+            }
+        });
+
+
 
     }
+
+
 
 
   /*  @Override
@@ -213,7 +245,7 @@ Bitmap bitmap;
 
             imguri = data.getData();
 
-         //   Picasso.with(this).load(imguri).into(bookpic);
+            Picasso.get().load(imguri).into(bookpic);
         }
     }
 

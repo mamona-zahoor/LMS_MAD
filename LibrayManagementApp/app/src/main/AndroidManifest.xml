@@ -12,20 +12,20 @@
         android:roundIcon="@mipmap/appicon"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
-        <activity android:name=".ReturnBook">
-
-        </activity>
-        <activity android:name=".AllIssuedBooks">
+        <activity android:name=".Deleted"></activity>
+        <activity android:name=".UpdateAllBooks" />
+        <activity android:name=".ReturnBook" />
+        <activity android:name=".AllIssuedBooks" />
+        <activity android:name=".LoginActivity" />
+        <activity android:name=".QRScannerActivity" />
+        <activity android:name=".AllBooksList">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
         </activity>
-        <activity android:name=".LoginActivity"></activity>
-        <activity android:name=".QRScannerActivity" />
-        <activity android:name=".AddBooks" />
+        <activity android:name=".AddBooks"></activity>
         <activity
             android:name=".IssueBook"
             android:parentActivityName=".AllIssuedBooks" />

@@ -2,6 +2,15 @@ package com.example.lms;
 
 public class ImageuploadInfo {
 
+    public String imageId;
+
+    public String getImageId() {
+        return imageId;
+    }
+
+    public void setImageId(String imageId) {
+        this.imageId = imageId;
+    }
 
     public String imageName;
     public String imageURL;
@@ -16,8 +25,8 @@ public class ImageuploadInfo {
         this.bookId = bookId;
     }
 
-    public ImageuploadInfo(String name, String url, String bookId) {
-        //  this.Id = Id;
+    public ImageuploadInfo(String imageid,String name, String url, String bookId) {
+          this.imageId = imageid;
         this.imageName = name;
         this.imageURL = url;
         this.bookId = bookId;

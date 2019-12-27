@@ -299,9 +299,9 @@ public class AddBooks extends AppCompatActivity {
                             imgid = ImageRef.push().getKey();
 
                             @SuppressWarnings("VisibleForTests")
-                            ImageuploadInfo imageUploadInfo = new ImageuploadInfo(imgid, taskSnapshot.getStorage().getDownloadUrl().toString(), bookId);
+                            ImageuploadInfo imageUploadInfo = new ImageuploadInfo(imgid,s, taskSnapshot.getStorage().getDownloadUrl().toString(), bookId);
                             //imgid = ImageRef.push().getKey();
-                            ImageRef.child(imgid).setValue(imageUploadInfo);
+                            ImageRef.child(imageUploadInfo.getImageId()).setValue(imageUploadInfo);
                         }
                     })
                     .addOnFailureListener(new OnFailureListener() {

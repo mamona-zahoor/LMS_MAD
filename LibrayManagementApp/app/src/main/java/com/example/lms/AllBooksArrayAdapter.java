@@ -89,19 +89,26 @@ public class AllBooksArrayAdapter extends ArrayAdapter <AllBooks> {
 
                 dbreff.child(book.getId()).setValue(null);
                 authreff.child(author.getAuthorId()).setValue(null);
-                ImageRef.orderByChild("bookId").equalTo(book.getId().toString()).addListenerForSingleValueEvent(new ValueEventListener() {
+                ImageRef.addValueEventListener(new ValueEventListener() {
                     @Override
-                    public void onDataChange(DataSnapshot dataSnapshot) {
-                        for(DataSnapshot datas: dataSnapshot.getChildren()){
-                            s = datas.child("imageName").getValue().toString();
+                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
+                        for (DataSnapshot dataSnapshot1 : dataSnapshot.getChildren()) {
+                            if(dataSnapshot1.child("bookId").getValue().equals(book.getId()))
+                            {
+                                dbreff.child(dataSnapshot1.child("imageId").getValue().toString()).removeValue();
+
+                                Toast.makeText(context,"Deleted Successfully ",Toast.LENGTH_LONG).show();
+                                Intent intent = new Intent(context,AllBooksList.class);
+                                context.startActivity(intent);
+                                break;
+                            }
                         }
                     }
                     @Override
-                    public void onCancelled(DatabaseError databaseError) {
+                    public void onCancelled(@NonNull DatabaseError databaseError) {
 
                     }
-
-
                 });
 
                 //ImageRef.orderByChild("bookId").equalTo(book.getId()).addListenerForSingleValueEvent(new ValueEventListener() {
@@ -110,10 +117,10 @@ public class AllBooksArrayAdapter extends ArrayAdapter <AllBooks> {
 
 
 
-                ImageRef.child(s).setValue(null);
-                  Toast.makeText(context,"Deleted Successfully ",Toast.LENGTH_LONG).show();
-                Intent intent = new Intent(context,AllBooksList.class);
-                context.startActivity(intent);
+              //  ImageRef.child(s).setValue(null);
+                //  Toast.makeText(context,"Deleted Successfully ",Toast.LENGTH_LONG).show();
+             //   Intent intent = new Intent(context,AllBooksList.class);
+              //  context.startActivity(intent);
 
             }
         });

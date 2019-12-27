@@ -159,8 +159,6 @@ public class IssueBook extends AppCompatActivity {
                     Db.child(Id).setValue(IssuedBookObj);
                     Db2 = FirebaseDatabase.getInstance().getReference("allbooks").child(BookId);
                     Db2.child("availability").setValue("Unavailable");
-
-
                     Toast.makeText(IssueBook.this, "Book issued!", Toast.LENGTH_SHORT).show();
 
 

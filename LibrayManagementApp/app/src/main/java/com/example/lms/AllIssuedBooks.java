@@ -79,6 +79,11 @@ public class AllIssuedBooks extends AppCompatActivity {
         Intent I = new Intent(AllIssuedBooks.this, IssueBook.class);
         startActivity(I);
     }
+    public void ReturnBook(View v)
+    {
+        Intent I = new Intent(AllIssuedBooks.this, ReturnBook.class);
+        startActivity(I);
+    }
     @Override
     protected void onStart() {
         super.onStart();

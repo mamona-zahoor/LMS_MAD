@@ -54,19 +54,22 @@
         android:id="@+id/txtisbn"
         android:layout_marginTop="20dp"
         />
+
     <EditText
+        android:id="@+id/txtPrice"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Price"
-        android:id="@+id/txtPrice"
         android:layout_marginTop="20dp"
-        />
+        android:hint="Price"
+        android:inputType="number" />
+
     <EditText
+        android:id="@+id/txtEdition"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginVertical="10dp"
-        android:id="@+id/txtEdition"
-        android:hint="Edition"/>
+        android:hint="Edition"
+        android:inputType="number" />
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

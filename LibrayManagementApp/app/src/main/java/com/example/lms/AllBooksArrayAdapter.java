@@ -93,7 +93,7 @@ public class AllBooksArrayAdapter extends ArrayAdapter <AllBooks> {
                     @Override
                     public void onDataChange(DataSnapshot dataSnapshot) {
                         for(DataSnapshot datas: dataSnapshot.getChildren()){
-                            s = datas.child("bookId").getKey().toString();
+                            s = datas.child("imageName").getValue().toString();
                         }
                     }
                     @Override
@@ -111,7 +111,9 @@ public class AllBooksArrayAdapter extends ArrayAdapter <AllBooks> {
 
 
                 ImageRef.child(s).setValue(null);
-                //  Toast.makeText(context,"")
+                  Toast.makeText(context,"Deleted Successfully ",Toast.LENGTH_LONG).show();
+                Intent intent = new Intent(context,AllBooksList.class);
+                context.startActivity(intent);
 
             }
         });

@@ -4,41 +4,98 @@
     android:orientation="horizontal" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <ImageView
-        android:id="@+id/imgBook"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        app:srcCompat="@android:drawable/sym_def_app_icon" />
-
     <LinearLayout
-        android:layout_width="290dp"
-        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_height="181dp"
         android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/txtBookName"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="TextView" />
+            android:layout_height="30dp"
+            android:orientation="horizontal">
 
-        <TextView
-            android:id="@+id/txtReturnDate"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="TextView" />
+            <TextView
+                android:id="@+id/LblName"
+                android:layout_width="95dp"
+                android:layout_height="match_parent"
+                android:text="Book"
+                android:textColor="@color/colorAccent"
+                android:textSize="15sp"
+                android:textStyle="italic" />
 
-        <TextView
-            android:id="@+id/txtIssuedDate"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="TextView" />
+            <TextView
+                android:id="@+id/txtBookName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="TextView" />
+        </LinearLayout>
 
-        <TextView
-            android:id="@+id/txtIssuedTo"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="TextView" />
+            android:layout_height="38dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/lblReturnDate"
+                android:layout_width="90dp"
+                android:layout_height="29dp"
+                android:layout_weight="1"
+                android:text="Return Date"
+                android:textColor="@color/colorAccent"
+                android:textSize="15sp"
+                android:textStyle="italic" />
+
+            <TextView
+                android:id="@+id/txtReturnDate"
+                android:layout_width="316dp"
+                android:layout_height="wrap_content"
+                android:text="TextView" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="46dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/lblIssuedDate"
+                android:layout_width="101dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+
+                android:text="Issue Date"
+                android:textColor="@color/colorAccent"
+                android:textSize="15sp"
+                android:textStyle="italic" />
+
+            <TextView
+                android:id="@+id/txtIssuedDate"
+                android:layout_width="318dp"
+                android:layout_height="wrap_content"
+                android:text="TextView" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="41dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/lblIssuedTo"
+                android:layout_width="92dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="Issued To"
+                android:textColor="@color/colorAccent"
+                android:textSize="15sp"
+                android:textStyle="italic" />
+
+            <TextView
+                android:id="@+id/txtIssuedTo"
+                android:layout_width="320dp"
+                android:layout_height="wrap_content"
+                android:text="TextView" />
+        </LinearLayout>
     </LinearLayout>
 
 </LinearLayout>

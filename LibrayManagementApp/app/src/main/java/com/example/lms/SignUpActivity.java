@@ -127,10 +127,12 @@ public class SignUpActivity extends AppCompatActivity {
 //            }
 //        });
 
+        EditText txtUsername = (EditText) findViewById(R.id.signupact_email);
         Map<String, Object> map = new HashMap<>();
         // map.put("id",userId);
         map.put("name", firstname.getText() + " " + lastname.getText());
         map.put("userrole", "user");
+        map.put("Email", txtUsername.getText().toString());
 
         databaseReference.child(userId).setValue(map).addOnCompleteListener(SignUpActivity.this, new OnCompleteListener<Void>() {
             @Override

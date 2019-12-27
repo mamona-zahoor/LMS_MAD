@@ -3,22 +3,30 @@ package com.example.lms;
 import java.util.Date;
 
 public class IssuedBooks {
-    private String ISBN;
+    private String BookId;
     private String Id;
     private String IssueTo;
     private String IssuedDate;
     private String ReturnDate;
-private String ImageId;
+    private String ImageId;
     public IssuedBooks() {
     }
 
     public IssuedBooks(String ISBN, String id, String issueTo, String issuedDate, String returnDate/*, String ImageId*/) {
-        this.ISBN = ISBN;
+        this.BookId = ISBN;
         Id = id;
         IssueTo = issueTo;
         IssuedDate = issuedDate;
-      //  this.ImageId = ImageId;
+        //  this.ImageId = ImageId;
         ReturnDate = returnDate;
+    }
+
+    public String getBookId() {
+        return BookId;
+    }
+
+    public void setBookId(String bookId) {
+        BookId = bookId;
     }
 
     public String getImageId() {
@@ -27,14 +35,6 @@ private String ImageId;
 
     public void setImageId(String imageId) {
         ImageId = imageId;
-    }
-
-    public String getISBN() {
-        return ISBN;
-    }
-
-    public void setISBN(String ISBN) {
-        this.ISBN = ISBN;
     }
 
     public String getId() {

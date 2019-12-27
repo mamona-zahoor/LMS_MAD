@@ -70,10 +70,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             case R.id.nav_books:
                 getSupportFragmentManager().beginTransaction().replace(R.id.mainframe, new ViewAllBooks_Fragment()).commit();
                 break;
-//            case R.id.nav_issuedbooks:
-//                getSupportFragmentManager().beginTransaction().replace(R.id.mainframe, new IssueBooks_Fragment()).commit();
-//                break;
-            case R.id.nav_changepassword:
+         case R.id.nav_issuedbooks:
+            Intent I = new Intent(MainActivity.this, AllIssuedBooks.class);
+            startActivity(I);
+            break;
+           case R.id.nav_changepassword:
                 getSupportFragmentManager().beginTransaction().replace(R.id.mainframe, new ChangePasswordActivity()).commit();
                 break;
             case R.id.nav_logout:

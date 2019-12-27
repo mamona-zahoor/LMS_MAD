@@ -8,21 +8,30 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseReference;
 
 import java.util.List;
 
 public class IssuedBooksList extends ArrayAdapter<IssuedBooks>
 {
+    DatabaseReference Db;
     Context context;
     private List<IssuedBooks> issuedBooksList;
-    public IssuedBooksList(Context context, List<IssuedBooks> issuedBooksList)
+    private List<String> BooksNames;
+    private List<String> BooksIds;
+    public IssuedBooksList(Context context, List<IssuedBooks> issuedBooksList, List<String> BooksNames, List<String> BooksIds)
     {
         super(context, R.layout.list_layout, issuedBooksList);
         this.context = context;
         this.issuedBooksList = issuedBooksList;
+        this.BooksNames = BooksNames;
+        this.BooksIds = BooksIds;
     }
 
     @NonNull
@@ -34,9 +43,16 @@ public class IssuedBooksList extends ArrayAdapter<IssuedBooks>
         TextView IssuedTo = (TextView) ListViewItem.findViewById(R.id.txtIssuedTo);
         TextView IssuedDate = (TextView) ListViewItem.findViewById(R.id.txtIssuedDate);
         TextView ReturnDate = (TextView) ListViewItem.findViewById(R.id.txtReturnDate);
-        ImageView image = (ImageView) ListViewItem.findViewById(R.id.imgBook);
         IssuedBooks Ib = issuedBooksList.get(position);
-        BookName.setText(Ib.getISBN());
+        for(int index = 0; index < BooksIds.size(); index++)
+        {
+            if(BooksIds.get(index).equals(Ib.getBookId()))
+            {
+                BookName.setText(BooksNames.get(index));
+                break;
+            }
+        }
+
         IssuedDate.setText(Ib.getIssuedDate());
         IssuedTo.setText(Ib.getIssueTo());
         ReturnDate.setText(Ib.getReturnDate());
